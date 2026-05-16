@@ -82,23 +82,21 @@ aws-eni-lab/
 ├── README.md
 │
 ├── screenshots/
-│   ├── 01-ec2-instance.png
+│   ├── 01-ec2-instance-running.png
 │   ├── 02-security-groups.png
-│   ├── 03-instance-networking.png
-│   ├── 04-primary-eni.png
-│   ├── 05-primary-elastic-ip.png
-│   ├── 06-secondary-eni.png
-│   ├── 07-secondary-elastic-ip.png
-│   ├── 08-ssh-validation.png
-│   ├── 09-linux-network-validation.png
-│   ├── 10-apache-installation.png
-│   ├── 11-apache-validation.png
-│   ├── 12-web-output-primary-ip.png
-│   ├── 13-web-output-secondary-ip.png
-│   ├── 14-web-output-secondary-eni.png
-│   ├── 15-secondary-eni-termination.png
-│   ├── 16-primary-eni-termination.png
-│   └── 17-ec2-termination.png
+│   ├── 03-primary-eni-details.png
+│   ├── 04-primary-elastic-ip.png
+│   ├── 05-secondary-eni-details.png
+│   ├── 06-secondary-elastic-ip.png
+│   ├── 07-primary-eni-termination-behavior.png
+│   ├── 08-secondary-eni-termination-behavior.png
+│   ├── 09-ssh-connection.png
+│   ├── 10-linux-ip-address-verification.png
+│   ├── 11-apache-installation.png
+│   ├── 12-apache-service-validation.png
+│   ├── 13-browser-output-primary-ip.png
+│   ├── 14-browser-output-elastic-ip-primary.png
+│   └── 15-browser-output-elastic-ip-secondary.png
 │
 ├── commands/
 │   ├── apache-commands.md
