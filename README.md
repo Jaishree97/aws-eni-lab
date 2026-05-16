@@ -306,7 +306,7 @@ Complete project implementation workflow available here:
 
 ---
 
-# 📸 Screenshots
+# 📸 screenshots
 
 ## EC2 Instance Running
 
