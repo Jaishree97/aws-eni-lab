@@ -1,48 +1,52 @@
 # 🚀 AWS ENI Networking Lab with Elastic IP & Apache Web Server
 
-![AWS](https://img.shields.io/badge/AWS-EC2-orange?style=for-the-badge&logo=amazonaws)
-![Linux](https://img.shields.io/badge/Linux-Administration-black?style=for-the-badge&logo=linux)
-![Apache](https://img.shields.io/badge/Apache-WebServer-red?style=for-the-badge&logo=apache)
-![Networking](https://img.shields.io/badge/AWS-Networking-blue?style=for-the-badge)
-![Project](https://img.shields.io/badge/Project-Completed-brightgreen?style=for-the-badge)
+![AWS](https://img.shields.io/badge/AWS-EC2-orange)
+![Elastic IP](https://img.shields.io/badge/AWS-ElasticIP-yellow)
+![Linux](https://img.shields.io/badge/Linux-RedHat-blue)
+![Networking](https://img.shields.io/badge/Domain-Networking-green)
+![Status](https://img.shields.io/badge/Project-Completed-brightgreen)
 
 ---
 
 # 📌 Project Overview
 
-This project demonstrates the implementation of **AWS Elastic Network Interfaces (ENI)** with **Elastic IPs**, **Apache HTTP Server**, and **Linux Networking Administration** inside AWS EC2 infrastructure.
+This project demonstrates the implementation of AWS Elastic Network Interfaces (ENI) with multiple private/public IP configurations inside an EC2 environment.
 
-The project focuses on:
-- Primary & Secondary ENI configuration
+The lab includes:
+
+- Primary ENI configuration
+- Secondary ENI attachment
 - Elastic IP association
-- Apache Web Server deployment
+- Apache HTTP Server setup
+- Multiple IP accessibility testing
 - Linux networking validation
-- ENI lifecycle behavior
-- AWS networking fundamentals
-- GitHub project documentation
+- ENI termination behavior
+- Security Group configuration
+- Git & GitHub project documentation
 
-This lab helped build practical understanding of AWS cloud networking and infrastructure administration.
+This project helped build practical understanding of AWS networking concepts, Elastic IP management, and multi-interface EC2 architecture.
 
 ---
 
 # 🎯 Project Objective
 
-The objective of this project is to design and validate AWS networking using Elastic Network Interfaces.
+The objective of this project is to design and implement AWS networking architecture using multiple ENIs and Elastic IPs.
 
 ### Key Objectives
 
-- Understand AWS ENI concepts
-- Configure multiple ENIs
+- Understand ENI concepts
+- Configure Primary & Secondary ENIs
 - Associate Elastic IPs
-- Deploy Apache HTTP Server
-- Validate Linux networking
+- Validate multiple IP communication
+- Configure Apache HTTP Server
+- Test web accessibility
 - Understand ENI termination behavior
 - Practice Linux administration
 - Build professional GitHub documentation
 
 ---
 
-# 🏗️ Architecture Overview
+# 🏗️ Architecture Diagram
 
 ```text
 AWS Cloud (us-east-2)
@@ -51,12 +55,12 @@ AWS Cloud (us-east-2)
 │
 ├── EC2 Instance (linux-server)
 │   │
-│   ├── Primary ENI
+│   ├── Primary ENI (primary-eni)
 │   │    ├── Private IP: 172.31.42.54
 │   │    ├── Secondary Private IP: 172.31.42.55
 │   │    └── Elastic IP: 3.23.201.105
 │   │
-│   └── Secondary ENI
+│   └── Secondary ENI (sec-eni)
 │        ├── Private IP: 172.31.40.61
 │        └── Elastic IP: 16.58.218.132
 │
@@ -70,37 +74,6 @@ AWS Cloud (us-east-2)
 
 ---
 
-# 🌍 AWS Region
-
-```text
-us-east-2 (Ohio)
-```
-
----
-
-# 🛠️ AWS Services Used
-
-| Service | Purpose |
-|----------|----------|
-| Amazon EC2 | Virtual Linux Server |
-| Elastic Network Interface (ENI) | Multiple network interfaces |
-| Elastic IP | Static public IP |
-| Security Groups | Traffic filtering |
-| Apache HTTP Server | Web hosting |
-| Red Hat Linux | Operating system |
-
----
-
-# ✅ Prerequisites
-
-- AWS Account
-- EC2 Key Pair
-- Basic Linux Knowledge
-- AWS Networking Basics
-- Git & GitHub
-
----
-
 # 📂 Repository Structure
 
 ```text
@@ -109,21 +82,23 @@ aws-eni-lab/
 ├── README.md
 │
 ├── screenshots/
-│   ├── 01-ec2-instance-running.png
+│   ├── 01-ec2-instance.png
 │   ├── 02-security-groups.png
-│   ├── 03-primary-eni-details.png
-│   ├── 04-primary-elastic-ip.png
-│   ├── 05-secondary-eni-details.png
-│   ├── 06-secondary-elastic-ip.png
-│   ├── 07-secondary-eni-termination-behavior.png
-│   ├── 08-primary-eni-termination-behavior.png
-│   ├── 09-ssh-connection.png
-│   ├── 10-linux-ip-address-verification.png
-│   ├── 11-apache-installation.png
-│   ├── 12-apache-service-validation.png
-│   ├── 13-browser-output-primary-ip.png
-│   ├── 14-browser-output-elastic-ip-primary.png
-│   └── 15-browser-output-elastic-ip-secondary.png
+│   ├── 03-instance-networking.png
+│   ├── 04-primary-eni.png
+│   ├── 05-primary-elastic-ip.png
+│   ├── 06-secondary-eni.png
+│   ├── 07-secondary-elastic-ip.png
+│   ├── 08-ssh-validation.png
+│   ├── 09-linux-network-validation.png
+│   ├── 10-apache-installation.png
+│   ├── 11-apache-validation.png
+│   ├── 12-web-output-primary-ip.png
+│   ├── 13-web-output-secondary-ip.png
+│   ├── 14-web-output-secondary-eni.png
+│   ├── 15-secondary-eni-termination.png
+│   ├── 16-primary-eni-termination.png
+│   └── 17-ec2-termination.png
 │
 ├── commands/
 │   ├── apache-commands.md
@@ -132,8 +107,8 @@ aws-eni-lab/
 │
 ├── notes/
 │   ├── eni-concepts.md
-│   ├── troubleshooting.md
-│   └── networking-basics.md
+│   ├── networking-basics.md
+│   └── troubleshooting.md
 │
 └── docs/
     └── project-flow.md
@@ -141,223 +116,293 @@ aws-eni-lab/
 
 ---
 
-# ⚙️ Project Implementation Steps
+# 🌍 AWS Region
 
-## Step 1 — Launch EC2 Instance
-
-Created a Red Hat Linux EC2 instance in AWS.
-
-### Screenshot
-
-![EC2 Instance](screenshots/01-ec2-instance-running.png)
+```text
+us-east-2 (Ohio)
+```
 
 ---
 
-## Step 2 — Configure Security Groups
+# 🧰 AWS Services Used
 
-Allowed:
-- SSH (22)
-- HTTP (80)
-
-### Screenshot
-
-![Security Groups](screenshots/02-security-groups.png)
+| Service | Purpose |
+|---|---|
+| Amazon EC2 | Virtual Linux Server |
+| Elastic Network Interface | Multiple network interfaces |
+| Elastic IP | Static public IP |
+| Security Groups | Traffic filtering |
+| Apache HTTP Server | Web hosting |
+| Linux | Server administration |
+| GitHub | Project documentation |
 
 ---
 
-## Step 3 — Configure Primary ENI
+# ✅ Prerequisites
+
+- AWS Account
+- EC2 Key Pair
+- Git & GitHub
+- Basic Linux Knowledge
+- Networking Fundamentals
+- SSH Client (PuTTY/Git Bash)
+
+---
+
+# 🚀 Lab Implementation Steps
+
+## Step 1: Launch EC2 Instance
+
+Created RedHat Linux EC2 instance.
+
+| Configuration | Value |
+|---|---|
+| Instance Name | linux-server |
+| Instance Type | t3.micro |
+| Region | us-east-2 |
+| Operating System | RedHat Linux |
+
+---
+
+## Step 2: Configure Security Groups
+
+Configured inbound rules:
+
+| Protocol | Port | Purpose |
+|---|---|---|
+| SSH | 22 | Remote Access |
+| HTTP | 80 | Web Access |
+
+---
+
+## Step 3: Create Primary ENI
+
+Configured primary ENI with:
+
+- Primary Private IP
+- Secondary Private IP
+- Elastic IP association
+
+---
+
+## Step 4: Create Secondary ENI
+
+Created additional network interface with:
+
+- Separate private IP
+- Dedicated Elastic IP
+- Separate security group
+
+---
+
+## Step 5: Attach Secondary ENI
+
+Attached secondary ENI to running EC2 instance successfully.
+
+Purpose:
+- Multi-network interface communication
+- Advanced AWS networking practice
+
+---
+
+## Step 6: Validate Linux Networking
+
+Verified network interfaces using:
+
+```bash
+ip a
+```
 
 Validated:
 - Primary private IP
 - Secondary private IP
-- Public IP association
-
-### Screenshot
-
-![Primary ENI](screenshots/03-primary-eni-details.png)
+- Additional ENI interface
 
 ---
 
-## Step 4 — Associate Elastic IP to Primary ENI
+## Step 7: Install Apache HTTP Server
 
-### Screenshot
-
-![Primary Elastic IP](screenshots/04-primary-elastic-ip.png)
-
----
-
-## Step 5 — Configure Secondary ENI
-
-Attached additional ENI to EC2 instance.
-
-### Screenshot
-
-![Secondary ENI](screenshots/05-secondary-eni-details.png)
-
----
-
-## Step 6 — Associate Elastic IP to Secondary ENI
-
-### Screenshot
-
-![Secondary Elastic IP](screenshots/06-secondary-elastic-ip.png)
-
----
-
-## Step 7 — Verify ENI Termination Behavior
-
-### Primary ENI
-
-![Primary ENI Behavior](screenshots/08-primary-eni-termination-behavior.png)
-
-### Secondary ENI
-
-![Secondary ENI Behavior](screenshots/07-secondary-eni-termination-behavior.png)
-
----
-
-# 🐧 Linux Networking Validation
-
-## SSH Connection
+Installed Apache using:
 
 ```bash
-ssh -i "fdkey.pem" ec2-user@3.23.201.105
+yum install httpd -y
 ```
 
-### Screenshot
-
-![SSH Connection](screenshots/09-ssh-connection.png)
-
----
-
-## Verify Network Interfaces
+Started service:
 
 ```bash
-ip a
+systemctl start httpd
 ```
 
-### Screenshot
-
-![IP Verification](screenshots/10-linux-ip-address-verification.png)
-
----
-
-# 🌐 Apache HTTP Server Setup
-
-## Install Apache
+Enabled service:
 
 ```bash
-sudo yum install httpd -y
+systemctl enable httpd
 ```
-
-### Screenshot
-
-![Apache Installation](screenshots/11-apache-installation.png)
 
 ---
 
-## Validate Apache Service
+## Step 8: Validate Apache Server
+
+Validation performed using:
 
 ```bash
 curl localhost
 ```
 
-### Screenshot
-
-![Apache Validation](screenshots/12-apache-service-validation.png)
+Successfully verified Apache web server response.
 
 ---
 
-# 🌍 Browser Output Validation
+## Step 9: Configure Custom Web Page
 
-Successfully validated Apache web page using:
-- Primary Public IP
+Created custom webpage:
+
+```html
+<h1>NIC-LAB</h1>
+```
+
+Accessible through:
 - Primary Elastic IP
-- Secondary ENI Elastic IP
+- Secondary Elastic IP
+- Secondary ENI
 
 ---
 
-## Primary Public IP
+## Step 10: Test ENI Termination Behavior
 
-![Primary Public IP](screenshots/13-browser-output-primary-ip.png)
+Validated:
 
----
+- Secondary ENI survives instance termination
+- Primary ENI deleted automatically
 
-## Primary Elastic IP
-
-![Primary Elastic IP](screenshots/14-browser-output-elastic-ip-primary.png)
-
----
-
-## Secondary ENI Elastic IP
-
-![Secondary Elastic IP](screenshots/15-browser-output-elastic-ip-secondary.png)
+This helped understand AWS ENI lifecycle behavior.
 
 ---
 
-# 📚 Learning Outcomes
+# 🐧 Linux Commands Documentation
 
-Through this project, I learned:
+Detailed command documentation available here:
 
-- AWS EC2 networking
-- Elastic Network Interfaces (ENI)
-- Elastic IP configuration
-- Apache HTTP Server deployment
-- Linux networking commands
+- [Apache Commands](commands/apache-commands.md)
+- [ENI Commands](commands/eni-commands.md)
+- [Linux Networking](commands/linux-networking.md)
+
+---
+
+# 📝 Additional Notes
+
+Detailed conceptual and troubleshooting notes available here:
+
+- [ENI Concepts](notes/eni-concepts.md)
+- [Networking Basics](notes/networking-basics.md)
+- [Troubleshooting Notes](notes/troubleshooting.md)
+
+---
+
+# 📄 Project Workflow Documentation
+
+Complete project implementation workflow available here:
+
+- [Project Flow](docs/project-flow.md)
+
+---
+
+# 📸 Screenshots
+
+## EC2 Instance
+
+![EC2 Instance](screenshots/01-ec2-instance.png)
+
+---
+
+## Primary ENI
+
+![Primary ENI](screenshots/04-primary-eni.png)
+
+---
+
+## Secondary ENI
+
+![Secondary ENI](screenshots/06-secondary-eni.png)
+
+---
+
+## Apache Validation
+
+![Apache Validation](screenshots/11-apache-validation.png)
+
+---
+
+## Web Output
+
+![Web Output](screenshots/12-web-output-primary-ip.png)
+
+---
+
+# 🔐 Security Concepts Learned
+
+- Elastic Network Interfaces
+- Elastic IP Management
+- Public vs Private IP
+- Security Groups
+- HTTP Protocol
+- SSH Connectivity
+- Linux Networking
+- Multi-IP Architecture
+
+---
+
+# ⚠️ Challenges Faced
+
+- ENI attachment troubleshooting
+- Elastic IP association
+- Apache service validation
+- SSH connectivity issues
+- Multi-IP verification
 - Security Group configuration
-- ENI persistence behavior
-- Infrastructure documentation
-- GitHub project structuring
 
 ---
 
-# 🧪 Commands Used
+# 🧠 Key Learning Outcomes
 
-## Linux Networking
+After completing this project, I learned:
 
-```bash
-ip a
-hostname -i
-ip route
-ping google.com
-```
-
-## Apache Commands
-
-```bash
-sudo yum install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-curl localhost
-```
+- AWS ENI architecture
+- Elastic IP association
+- Linux networking fundamentals
+- Apache HTTP server configuration
+- Multi-network interface validation
+- AWS security group management
+- SSH administration
+- EC2 networking concepts
+- ENI lifecycle behavior
+- Practical cloud networking
 
 ---
 
-# 📖 Documentation Files
+# 🧹 Cleanup
 
-| File | Description |
-|------|-------------|
-| project-flow.md | Complete implementation workflow |
-| eni-concepts.md | AWS ENI concepts |
-| troubleshooting.md | Common issues and fixes |
-| networking-basics.md | Networking fundamentals |
-| apache-commands.md | Apache administration commands |
-| eni-commands.md | ENI & networking commands |
+All AWS resources created during this lab were deleted after testing to avoid unnecessary AWS billing charges.
 
 ---
 
-# ✅ Project Status
+# 🚀 Future Improvements
 
-```text
-Project Completed Successfully
-```
+- Add Load Balancer
+- Configure Auto Scaling
+- Implement Terraform automation
+- Add CloudWatch monitoring
+- Configure Route53
+- Implement NAT Gateway
 
 ---
 
 # 👩‍💻 Author
 
-## Jaishree Chaure
+**Jaishree Chaure**
 
-AWS | Linux | Networking | DevOps Learner
+Passionate about AWS, Linux, Networking, and DevOps Engineering.  
+Currently building hands-on cloud and infrastructure projects to strengthen practical skills in AWS and DevOps.
 
----
+🔗 GitHub: https://github.com/Jaishree97
