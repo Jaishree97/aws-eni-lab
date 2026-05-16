@@ -308,33 +308,28 @@ Complete project implementation workflow available here:
 
 # 📸 Screenshots
 
-## EC2 Instance
-
-![EC2 Instance](screenshots/01-ec2-instance.png)
-
----
-
-## Primary ENI
-
-![Primary ENI](screenshots/04-primary-eni.png)
+## EC2 Instance Running
+![EC2](screenshots/01-ec2-instance-running.png)
 
 ---
 
-## Secondary ENI
-
-![Secondary ENI](screenshots/06-secondary-eni.png)
-
----
-
-## Apache Validation
-
-![Apache Validation](screenshots/11-apache-validation.png)
+## Primary ENI Configuration
+![Primary ENI](screenshots/03-primary-eni-details.png)
 
 ---
 
-## Web Output
+## Secondary ENI Configuration
+![Secondary ENI](screenshots/05-secondary-eni-details.png)
 
-![Web Output](screenshots/12-web-output-primary-ip.png)
+---
+
+## Apache Service Validation
+![Apache](screenshots/12-apache-service-validation.png)
+
+---
+
+## Browser Output Using Elastic IP
+![Browser Output](screenshots/15-browser-output-elastic-ip-secondary.png)
 
 ---
 
